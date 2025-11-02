@@ -1,4 +1,4 @@
-# BoltNewClone
+# Kinetic
 
 ![Project Banner](./public/WorkingImage.png)
 
