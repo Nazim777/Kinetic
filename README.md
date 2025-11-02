@@ -140,4 +140,4 @@ Contributions are welcome. Open issues or PRs, describe the change, and include 
 
 ---
 
-_Built with Next.js, Convex, and minimal ❤️ by Avik-creator._
+_Built with Next.js, Convex , Stripe, and minimal ❤️ by Mohammad Nazim Hossain._
