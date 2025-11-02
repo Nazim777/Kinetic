@@ -19,16 +19,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bolt New Clone",
-  description: "Bolt New Clone",
+  title: "Kinetic",
+  description: "AI Application Builder",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Bolt New Clone",
-    description: "Bolt New Clone",
+    title: "Kitetic",
+    description: "AI Application Builder",
     images: "/favicon.ico",
-    siteName: "Bolt New Clone",
+    siteName: "AI Application Builder",
     locale: "en_US",
     type: "website",
   },
@@ -39,7 +39,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* ⛔ REMOVE overflow-hidden from body */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden`}
       >
@@ -52,15 +51,10 @@ export default function RootLayout({
             >
               <SidebarProvider>
                 <div className="flex h-screen w-full overflow-hidden">
-                  {/* Sidebar */}
                   <AppSidebar />
-
-                  {/* Main area */}
                   <div className="flex flex-col flex-1 overflow-hidden">
-                    {/* Header (fixed height) */}
                     <Header />
 
-                    {/* ✅ Scrollable main content */}
                     <main className="flex-1 overflow-y-auto p-6">
                       {children}
                       <Toaster position="top-center" richColors closeButton />
