@@ -28,13 +28,13 @@ const {toggleSidebar} = useSidebar()
       {
         userDetail?.name && (
           <div className='relative'>
-            <Image
+            {/* <Image
               src={userDetail?.pic}
               alt='User'
               width={35}
               height={35}
               className='rounded-full cursor-pointer'
-            />
+            /> */}
           </div>
         )
       }

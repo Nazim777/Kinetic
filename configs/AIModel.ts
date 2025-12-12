@@ -3,7 +3,7 @@ const API_KEY = process.env.GEMINI_API_KEY as string;
 const GenAI = new GoogleGenerativeAI(API_KEY);
 
 const model = GenAI.getGenerativeModel({
-  model: "gemini-2.5-flash",
+  model: "gemini-2.5-flash-lite",
 });
 
 const generationConfig = {

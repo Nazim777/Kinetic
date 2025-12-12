@@ -34,37 +34,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden`}
-      >
-       
-          <ConvexClientProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              disableTransitionOnChange
-            >
-              <SidebarProvider>
-                <div className="flex h-screen w-full overflow-hidden">
-                  <AppSidebar />
-                  <div className="flex flex-col flex-1 overflow-hidden">
-                    <Header />
-
-                    <main className="flex-1 overflow-y-auto p-6">
-                      {children}
-                      <Toaster position="top-center" richColors closeButton />
-                    </main>
-                  </div>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
+        <ConvexClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+            <SidebarProvider>
+              <div className="flex min-h-screen w-full">
+                <AppSidebar />
+                <div className="flex flex-col flex-1">
+                  <Header />
+                  <main className="flex-1">
+                    {children}
+                    <Toaster position="top-center" richColors closeButton />
+                  </main>
                 </div>
-              </SidebarProvider>
-            </ThemeProvider>
-          </ConvexClientProvider>
-       
+              </div>
+            </SidebarProvider>
+          </ThemeProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );

@@ -41,6 +41,7 @@ export const Hero = () => {
     setMessages([...messages, message]);
     try {
       if (!getUserData?._id) {
+        //toast.error('User not found in database...')
         console.error("User not found in database");
         return;
       }
@@ -53,9 +54,10 @@ export const Hero = () => {
         message: [message],
       });
       if (workspaceId) {
-        router.push('/workspace/' + workspaceId);
+        router.push(`/workspace/${workspaceId}?newUserMessage=1`);
       }
     } catch (error) {
+      toast.error('Failed to create workspace, Please try again later...')
       console.error("Error creating workspace:", error);
     }
   }

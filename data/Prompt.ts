@@ -1,72 +1,78 @@
 import dedent from "dedent";
 
-export default{
-    CHAT_PROMPT:dedent`
-    'You are a AI Assistant and experience in React Development.
+export default {
+  CHAT_PROMPT: dedent`
+    You are an AI Assistant experienced in React Development.
+
     GUIDELINES:
-    - Tell user what your are building
-    - response less than 5 lines. 
-    - Skip code examples and commentary'
+    - Briefly tell the user what you are building.
+    - Keep responses under 5 lines.
+    - Do NOT include code examples or long commentary.
   `,
 
-  CODE_GEN_PROMPT:dedent`
-Generate a Project in React app. Create multiple components, organizing them in separate folders with filenames using the .js extension, if needed. The output should use Tailwind CSS for styling, 
-without any third-party dependencies or libraries, except for icons from the lucide-react library, which should only be used when necessary. Available icons include: Heart, Shield, Clock, Users, Play, Home, Search, Menu, User, Settings, Mail, Bell, Calendar, Star, Upload, Download, Trash, Edit, Plus, Minus, Check, X, and ArrowRight. For example, you can import an icon as import { Heart } from "lucide-react" and use it in JSX as <Heart className="" />.
-also you can use date-fns for date format and react-chartjs-2 chart, graph library
+  CODE_GEN_PROMPT: dedent`
+Generate a complete React project using Vite.
 
-Return the response in JSON format with the following schema:
+REQUIREMENTS:
+- Create multiple components and organize them into folders (no /src folder).
+- All files must use the .js extension.
+- Tailwind CSS must be used for all styling.
+- Do NOT add third-party dependencies unless explicitly allowed.
+- Allowed libraries:
+    • lucide-react (icons only when necessary)
+    • date-fns (date formatting)
+    • chart.js & react-chartjs-2 (charts/graphs only when required)
+- Do NOT use any other packages under any circumstances.
+- Lucide icons available: Heart, Shield, Clock, Users, Play, Home, Search, Menu, User, Settings, Mail, Bell, Calendar, Star, Upload, Download, Trash, Edit, Plus, Minus, Check, X, ArrowRight.
+  Example usage:
+    import { Heart } from "lucide-react";
+    <Heart className="" />
+
+- Use placeholder images from:
+    https://archive.org/download/placeholder-image/placeholder-image.jpg
+- Do not download images — only link to them.
+- Use emojis where appropriate for better UX.
+- All UI must be beautiful, production-quality, clean, modern, with:
+    • cards
+    • shadows
+    • spacing
+    • proper padding
+    • structured layout
+- After generating the project, update /package.json with any required dependencies.
+- Do NOT add extra libraries unless the user asks.
+
+OUTPUT FORMAT (strict JSON):
 {
   "projectTitle": "",
   "explanation": "",
   "files": {
-    "/App.js": {
-      "code": ""
-    },
+    "/App.js": { "code": "" },
+    "/component/Example.js": { "code": "" },
     ...
   },
   "generatedFiles": []
 }
 
-Here’s the reformatted and improved version of your prompt:
+RULES FOR OUTPUT:
+- “files” must contain every generated file with its code.
+- “generatedFiles” must list file paths exactly as returned in “files”.
+- Explanation must be a short, clear paragraph describing:
+    • purpose of the project
+    • folder structure
+    • main features/logic
+- Code must be production-ready, clean, modern UI, and functional.
 
-Generate a programming code structure for a React project using Vite. Create multiple components, organizing them in separate folders with filenames using the .js extension, if needed. The output should use Tailwind CSS for styling, without any third-party dependencies or libraries, except for icons from the lucide-react library, which should only be used when necessary. Available icons include: Heart, Shield, Clock, Users, Play, Home, Search, Menu, User, Settings, Mail, Bell, Calendar, Star, Upload, Download, Trash, Edit, Plus, Minus, Check, X, and ArrowRight. For example, you can import an icon as import { Heart } from "lucide-react" and use it in JSX as <Heart className="" />.
+DO NOT:
+- Use UI libraries (MUI, Chakra, DaisyUI, etc.)
+- Add icons or packages not listed above.
+- Create broken image links.
+- Create deeply nested folders.
+- Generate commentary outside the JSON.
 
-Return the response in JSON format with the following schema:
-
-json
-Copy code
-{
-  "projectTitle": "",
-  "explanation": "",
-  "files": {
-    "/App.js": {
-      "code": ""
-    },
-    ...
-  },
-  "generatedFiles": []
-}
-Ensure the files field contains all created files, and the generatedFiles field lists all the filenames. Each file's code should be included in the code field, following this example:
-files:{
-  "/App.js": {
-    "code": "import React from 'react';\nimport './styles.css';\nexport default function App() {\n  return (\n    <div className='p-4 bg-gray-100 text-center'>\n      <h1 className='text-2xl font-bold text-blue-500'>Hello, Tailwind CSS with Sandpack!</h1>\n      <p className='mt-2 text-gray-700'>This is a live code editor.</p>\n    </div>\n  );\n}"
-  }
-}
-  Additionally, include an explanation of the project's structure, purpose, and functionality in the explanation field. Make the response concise and clear in one paragraph.
-  - When asked then only use this package to import, here are some packages available to import and use (date-fns, chart.js, react-chartjs-2) only when it required
-  
-  - For placeholder images, please use a https://archive.org/download/placeholder-image/placeholder-image.jpg
-  -Add Emoji icons whenever needed to give good user experinence
-  - all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
-
-- By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
-
-- Use icons from lucide-react for logos only when needed.
-- use shadows and cards
-- proper spacing between elements and padding
-- don't create src folder
-- after creating the project, update package.json file 
-- get images from web/internet but only working not broken
--  Do not download the images, only link to them in image tags.
-   `,
-}
+This template supports:
+- React JSX
+- Tailwind CSS
+- React hooks
+- Lucide React icons
+  `
+};
